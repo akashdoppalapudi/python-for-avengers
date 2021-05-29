@@ -21,4 +21,37 @@ class Node:
             nodes[i-1].formLink(nodes[i])
 
         return nodes[0]
-    
+
+    def addNode(self, val, pos=-1):
+        new_node = Node(val)
+        node = self
+        if pos == -1:
+            while(node.next!=None):
+                node = node.next
+
+            node.formLink(new_node)
+
+        elif pos>0:
+            i = 1
+            try:
+                while(i<pos):
+                    node = node.next
+                    i += 1
+
+                next_node = node.next
+                node.formLink(new_node)
+                new_node.formLink(next_node)
+            
+            except AttributeError:
+                print("Invalid Position")
+        
+        else:
+            print("Invalid Position")
+
+
+
+root = Node().convert([4,6,5,8,9,2])
+
+root.addNode(12, 9)
+
+root.display()
