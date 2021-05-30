@@ -48,10 +48,40 @@ class Node:
         else:
             print("Invalid Position")
 
+    def length(self):
+        i = 0
+        node = self
+        while(node!=None):
+            node = node.next
+            i += 1
+        return i
+    
+    def removeNode(self, pos=-1):
+        node = self
+        if pos == -1:
+            while (node.next.next!=None):
+                node = node.next
+            del node.next
+            node.next = None
+        
+        elif pos>0:
+            i = 1
+            try:
+                while(i<pos):
+                    node = node.next
+                    i += 1
+                node.formLink(node.next.next)
+            except AttributeError:
+                print("Invalid Position")
+        
+        else:
+            print("Invalid Position")
 
 
-root = Node().convert([4,6,5,8,9,2])
 
-root.addNode(12, 9)
+root = Node().convert([4,6,5,8,9,8,2])
+root.display()
+
+root.removeNode()
 
 root.display()
