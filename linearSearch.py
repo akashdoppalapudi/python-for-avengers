@@ -26,7 +26,6 @@ while node!=None:
         break
     node = node.next
     i += 1
-
 else:
     print(key,"is not found")
 
